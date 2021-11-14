@@ -4,9 +4,9 @@ namespace TrashGrounds.Components
 {
     public class Checkbox : ViewComponent
     {
-        public IViewComponentResult Invoke(string label, string type = "checkbox")
+        public IViewComponentResult Invoke(string label)
         {
-            return View(type, label);
+            return View("~/Views/CarbonComponents/Checkbox.cshtml", label);
         }
     }
 }
