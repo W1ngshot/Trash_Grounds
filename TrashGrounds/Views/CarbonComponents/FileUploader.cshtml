@@ -1,0 +1,17 @@
+﻿@model FileUploaderViewModel
+
+<div class="bx--form-item">
+  <strong class="bx--file--label">@Model.Label</strong>
+  <p class="bx--label-description">@Model.Description</p>
+  <div class="bx--file" data-file data-file-demo-state-manager>
+    <label for="file-uploader" class="bx--file-browse-btn" role="button" tabindex="0">
+      <div data-file-drop-container class="bx--file__drop-container">
+        Перетащите файлы на это поле или нажмите
+        <input type="file" class="bx--file-input" id="file-uploader" data-file-uploader
+          data-target="[data-file-container]" multiple />
+      </div>
+    </label>
+    <div data-file-container class="bx--file-container">
+    </div>
+  </div>
+</div>
