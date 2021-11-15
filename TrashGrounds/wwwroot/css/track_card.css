@@ -1,0 +1,74 @@
+﻿.tg-track-card {
+    position: relative;
+}
+
+.tg-track-card {
+    background-color: #262626;
+}
+
+.tg-track-card__image-container {
+    position: relative;
+    padding-bottom: 100%;
+    display: block;
+    width: 100%;
+}
+
+.tg-track-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tg-track-card__info {
+    height: 80px;
+    box-sizing: border-box;
+    padding: 8px 10px 8px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tg-track-card__track-name,
+.tg-track-card__author-name {
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    text-decoration: none;
+}
+
+.tg-track-card__track-name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    max-height: 40px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.tg-track-card__author-name,
+.tg-track-card__rating {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    max-height: 18px;
+}
+
+.tg-track-card__author-name {
+    width: calc(100% - 48px);
+}
+
+.tg-track-card__rating {
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tg-track-card__rating--icon {
+    width: 16px;
+    height: 16px;
+}
