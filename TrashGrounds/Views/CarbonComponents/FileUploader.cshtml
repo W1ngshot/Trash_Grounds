@@ -1,8 +1,8 @@
 ﻿@model FileUploaderViewModel
 
 <div class="bx--form-item">
-  <strong class="bx--file--label">@Model.Label</strong>
-  <p class="bx--label-description">@Model.Description</p>
+  <strong class="bx--file--label">@Model?.Label</strong>
+  <p class="bx--label-description">@Model?.Description</p>
   <div class="bx--file" data-file data-file-demo-state-manager>
     <label for="file-uploader" class="bx--file-browse-btn" role="button" tabindex="0">
       <div data-file-drop-container class="bx--file__drop-container">

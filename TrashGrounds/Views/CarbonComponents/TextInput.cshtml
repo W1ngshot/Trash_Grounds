@@ -1,6 +1,6 @@
 ﻿@model TextInputViewModel
 
-@if (Model.Type == "text") {
+@if (Model?.Type == "text") {
     <div 
         class="bx--form-item bx--text-input-wrapper">
         <label for="text-input-3" class="bx--label">@Model.Label</label>
@@ -14,7 +14,7 @@ else
 {
     <div  data-text-input 
       class="bx--form-item bx--text-input-wrapper bx--password-input-wrapper">
-  <label for="text-input-3" class="bx--label">@Model.Label</label>
+  <label for="text-input-3" class="bx--label">@Model?.Label</label>
   <div class="bx--text-input__field-wrapper">
     <input id="text-input-3" type="password"
            class="bx--text-input bx--password-input"
