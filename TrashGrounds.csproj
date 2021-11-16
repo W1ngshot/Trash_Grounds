@@ -8,13 +8,11 @@
 
     <ItemGroup>
       <Folder Include="Pages\Components" />
+      <Folder Include="wwwroot\fonts" />
       <Folder Include="wwwroot\img" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Views\Shared\Components\Header\Default.cshtml.css">
-        <DependentUpon>Default.cshtml</DependentUpon>
-      </None>
       <None Include="wwwroot\css\header.css" />
     </ItemGroup>
 
