@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TrashGrounds.Models;
-using System;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TrashGrounds.Components
 {
@@ -15,20 +14,17 @@ namespace TrashGrounds.Components
             long authorId = 0,
             string authorName = "Author name")
         {
-            var model = new TrackCardViewModel
-            {
-                TrackId = trackId,
-                TrackName = trackName,
-                AuthorId = authorId,
-                AuthorName = authorName,
-                PreviewUrl = previewUrl
-            };
+
+            ViewBag.TrackId = trackId;
+            ViewBag.TrackName = trackName;
+            ViewBag.AuthorId = authorId;
+            ViewBag.AuthorName = authorName;
+            ViewBag.PreviewUrl = previewUrl;
 
             if (rating != null)
-                model.Rating = String.Format("{0:0.0}", rating);
+                ViewBag.Rating = String.Format("{0:0.0}", rating);
 
-
-            return View(model);
+            return View("~/Views/Shared/Components/TrackCard.cshtml");
         }
     }
 }

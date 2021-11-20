@@ -22,8 +22,11 @@
     object-fit: cover;
 }
 
-.tg-track-card__info {
+.tg-track-card__info-container {
     height: 80px;
+}
+
+.tg-track-card__info {
     box-sizing: border-box;
     padding: 8px 10px 8px 15px;
     display: flex;
