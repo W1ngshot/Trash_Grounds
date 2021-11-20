@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using TrashGrounds.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace TrashGrounds.Components
 {
     public class Dropdown : ViewComponent
     {
-        public IViewComponentResult Invoke(IEnumerable<DropdownOption> options, string label = "")
+        public IViewComponentResult Invoke(string label = "")
         {
-            return View("~/Views/CarbonComponents/Dropdown.cshtml", new DropdownViewModel(label, options));
+            return View("~/Views/CarbonComponents/Dropdown.cshtml");
         }
     }
 }

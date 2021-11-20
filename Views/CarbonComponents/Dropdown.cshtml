@@ -1,25 +1,36 @@
-﻿@model DropdownViewModel
+﻿@model string
 
 <div class="bx--form-item">
   <div class="bx--dropdown__wrapper ">
-    <span id="example-1i7ng3rpzyp-label" class="bx--label">@Model?.Label</span>
+    <span id="example-1i7ng3rpzyp-label" class="bx--label">Dropdown label</span>
+    <div class="bx--form__helper-text">Optional helper text.</div>
     <div data-dropdown data-value
-      class="bx--dropdown">
+      class="bx--dropdown   ">
       <button class="bx--dropdown-text" aria-haspopup="true" aria-expanded="false" aria-controls="example-1i7ng3rpzyp-menu" aria-labelledby="example-1i7ng3rpzyp-label example-1i7ng3rpzyp-value" type="button">
-        <span class="bx--dropdown-text__inner" id="example-1i7ng3rpzyp-value">Выберите вариант</span>
+        <span class="bx--dropdown-text__inner" id="example-1i7ng3rpzyp-value"> Dropdown option </span>
         <span class="bx--dropdown__arrow-container">
           <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="bx--dropdown__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path></svg>
         </span>
       </button>
-      <ul class="bx--dropdown-list" id="example-1i7ng3rpzyp-menu" role="menu" tabindex="0" aria-hidden="true" wh-menu-anchor="left" aria-labelledby="example-1i7ng3rpzyp-label">
-        @{
-          foreach (var option in @Model.DropdownOptions)
-          {
-            <li data-option data-value=@option.Value class="bx--dropdown-item" title=@option.Name>
-              <a class="bx--dropdown-link" href="javascript:void(0)" tabindex="-1" role="menuitemradio" aria-checked="true" id="example-1i7ng3rpzyp-item0">@option.Name</a>
-            </li>
-          }
-        }
+      <ul class="bx--dropdown-list" id="example-1i7ng3rpzyp-menu" role="menu" tabindex="0" id="example-1i7ng3rpzyp-menu" aria-hidden="true" wh-menu-anchor="left" aria-labelledby="example-1i7ng3rpzyp-label">
+        <li data-option data-value="all" class="bx--dropdown-item" title="Option 1">
+          <a class="bx--dropdown-link" href="javascript:void(0)" tabindex="-1" role="menuitemradio" aria-checked="true" id="example-1i7ng3rpzyp-item0">Option 1</a>
+        </li>
+        <li data-option data-value="cloudFoundry" class="bx--dropdown-item" title="Option 2">
+          <a class="bx--dropdown-link" href="javascript:void(0)" tabindex="-1" role="menuitemradio" aria-checked="false" id="example-1i7ng3rpzyp-item1">Option 2</a>
+        </li>
+        <li data-option data-value="staging" class="bx--dropdown-item" title="Option 3">
+          <a class="bx--dropdown-link" href="javascript:void(0)" tabindex="-1" role="menuitemradio" aria-checked="false" id="example-1i7ng3rpzyp-item2">Option 3</a>
+        </li>
+        <li data-option data-value="dea" class="bx--dropdown-item" title="Option 4">
+          <a class="bx--dropdown-link" href="javascript:void(0)" tabindex="-1" role="menuitemradio" aria-checked="false" id="example-1i7ng3rpzyp-item3">Option 4</a>
+        </li>
+        <li data-option data-value="router" class="bx--dropdown-item" title="Option 5">
+          <a class="bx--dropdown-link" href="javascript:void(0)" tabindex="-1" role="menuitemradio" aria-checked="false" id="example-1i7ng3rpzyp-item4">Option 5</a>
+        </li>
+        <li data-option data-value="loremipsum" class="bx--dropdown-item" title="An example option that is really long to show what should be done to handle long text">
+          <a class="bx--dropdown-link" href="javascript:void(0)" tabindex="-1" role="menuitemradio" aria-checked="false" id="example-1i7ng3rpzyp-item5">An example option that is really long to show what should be done to handle long text</a>
+        </li>
       </ul>
     </div>
   </div>
