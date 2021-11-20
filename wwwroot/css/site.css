@@ -17,3 +17,9 @@ body {
   padding-right: 40px;
   margin: auto;
 }
+
+.tg-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}

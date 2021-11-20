@@ -1,0 +1,17 @@
+<div class="tg-track-list">
+  <div class="tg-track-list__header">
+    <img class="tg-track-list__header-icon" src="@ViewBag.IconPath" alt="list icon">
+    <h3 class="tg-track-list__name">
+      @ViewBag.Name
+    </h3>
+    <a class="tg-track-list__more" href="">больше</a>
+  </div>
+  <div class="tg-track-list__items">
+    @if (ViewBag.Tracks is not null) {
+      foreach (var track in ViewBag.Tracks)
+      {
+          <vc:track-card rating="@track.Rating" preview-url="@track.PreviewUrl"  />
+      }
+    }
+  </div>
+</div>

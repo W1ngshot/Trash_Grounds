@@ -1,0 +1,59 @@
+.tg-track-list__header {
+    display: flex;
+    padding-left: 8px;
+    height: 32px;
+    margin-bottom: 20px;
+}
+
+.tg-track-list__header-icon {
+    height: 32px;
+    width: 32px;
+}
+
+.tg-track-list__name {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.tg-track-list__more {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-left: auto;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.tg-track-list__items {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+@media (min-width: 860px) and (max-width: 1059px) {
+    .tg-track-list__items {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 660px) and (max-width: 859px) {
+    .tg-track-list__items {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 460px) and (max-width: 659px) {
+    .tg-track-list__items {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 459px) {
+    .tg-track-list__items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

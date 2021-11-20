@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="~/css/_fonts.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/header.css" />
-    <link rel="stylesheet" href="~/css/track_card.css"/>
+    <link rel="stylesheet" href="~/css/track-card.css"/>
+    <link rel="stylesheet" href="~/css/track-list.css"/>
+    <link rel="stylesheet" href="~/css/main-index.css" />
 </head>
 <body>
 <vc:header />
-<main role="main" class="tg-container">
-    @RenderBody()
-</main>
+
+@RenderBody()
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
