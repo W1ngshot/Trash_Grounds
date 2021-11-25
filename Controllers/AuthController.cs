@@ -7,4 +7,9 @@ public class AuthController : Controller
     {
         return View("~/Views/Pages/Auth/SignIn.cshtml");
     }
+    
+    public IActionResult SignUp()
+    {
+        return View("~/Views/Pages/Auth/SignUp.cshtml");
+    }
 }

@@ -1,0 +1,23 @@
+<div class="auth">
+    <img class="auth__cover" src="/img/auth-cover.jpg" alt="page layout cover">
+    <main class="auth__main tg-half-container">
+        <a class="auth__main-link" asp-controller="Main" asp-action="Index">
+            <img class="auth__logo" src="~/img/logo.svg" alt="logo"/>
+        </a>
+
+        <form class="auth__form">
+            <h2 class="auth__form-header">Авторизация</h2>
+            
+            <vc:text-input type="text" label="E-mail"/>
+            <vc:text-input type="text" label="Логин"/>
+            <vc:text-input type="password" label="Пароль"/>
+            <vc:button type="tertiary" text="Войти"/>
+            <span class="auth__alternative">
+                Есть аккаунт?
+                <a class="auth__alternative-link" asp-controller="Auth" asp-action="SignIn">
+                    Войти
+                </a>
+            </span>
+        </form>
+    </main>
+</div>
