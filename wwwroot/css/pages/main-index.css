@@ -1,0 +1,49 @@
+.main {
+    padding-top: 50px;
+    padding-bottom: 150px;
+}
+
+.main__about {
+    height: min-content;
+}
+
+.about__text {
+    background-color: #162632;
+    grid-column: 1 / 10;
+    padding: 30px 30px 30px 45px;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.about__project {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+    max-width: 425px;
+}
+
+.about__project-name {
+    font-weight: 700;
+}
+
+.about__donate {
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 10px;
+    max-width: 535px;
+}
+
+.about__image {
+    height: 100%;
+    grid-column: 10 / 13;
+}
+
+.about__image > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.main__track-list {
+    margin-top: 50px;
+}

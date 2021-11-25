@@ -1,0 +1,44 @@
+﻿.tg-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tg-header__logo {
+    height: 40px;
+}
+
+.tg-header__menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.tg-header__menu-item {
+    display: inline;
+    padding: 0 10px;
+    margin: 0 10px;
+}
+
+.tg-header__menu-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.tg-header__menu-link:hover {
+    text-decoration: underline;
+}
+
+.tg-header__auth {
+    margin-left: auto;
+    text-decoration: none;
+}
+
+.tg-header__auth > button {
+    padding-right: 12px !important;
+}

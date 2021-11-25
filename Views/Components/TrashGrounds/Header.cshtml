@@ -1,0 +1,39 @@
+﻿@model bool
+
+@{
+    var isLogined = Model;
+}
+
+<header class="tg-header tg-container">
+    <a asp-controller="Main" asp-action="Index">
+        <img class="tg-header__logo" src="~/img/logo.svg" alt="logo"/>
+    </a>
+
+    <ul class="tg-header__menu">
+        <li class="tg-header__menu-item">
+            <a class="tg-header__menu-link" asp-controller="Main" asp-action="Index">Главная</a>
+        </li>
+        <li class="tg-header__menu-item">
+            <a class="tg-header__menu-link" asp-controller="Search" asp-action="Index">Поиск</a>
+        </li>
+
+        @if (isLogined) {
+            <li class="tg-header__menu-item">
+                <a class="tg-header__menu-link" asp-controller="Author" asp-action="Tracks">Мои треки</a>
+            </li>
+            <li class="tg-header__menu-item">
+                <a class="tg-header__menu-link" asp-controller="Author" asp-action="Posts">Мои посты</a>
+            </li>
+        }
+    </ul>
+
+    @if (isLogined) {
+        <span class="tg-header__auth">
+            Todo: username
+        </span>
+    } else {
+        <a asp-controller="Auth" asp-action="SignIn" class="tg-header__auth">
+            <vc:button class="tg-header__sign-in" type="tertiary" text="Войти" size="small" />
+        </a>
+    }    
+</header>

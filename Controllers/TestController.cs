@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TrashGrounds.Controllers
+namespace TrashGrounds.Controllers;
+
+public class TestController : Controller
 {
-    public class TestController : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View("~/Views/Pages/Test.cshtml");
     }
 }

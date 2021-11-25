@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "_Layout";
+
+    var tracks = new[] {
+        new TrackCardModel { TrackName = "Aboba" },
+        new TrackCardModel { TrackName = "Bebra" },
+        new TrackCardModel { TrackName = "JoJo" }
+    };
+}
+
+<vc:header />
+
+<main role="main" class="main tg-container">
+    <section class="main__about about tg-grid">
+        <div class="about__text">
+            <p class="about__project">
+                <span class="about__project-name">trash grounds</span> - лучшая платформа для публикации трэшовых мэшапов и гачи-ремиксов.
+            </p>
+            <p class="about__donate">
+                Вы можете отпрвить свои three hundred DOGE на адрес DA2GabbJUcFDWPzPZFw2AyfTaioDMwZAHr чтобы поддержать проект
+            </p>
+        </div>
+
+        <div class="about__image">
+            <img src="~/img/doge-cover.png" alt="doge">
+        </div>
+    </section>
+
+    <section class="main__track-list track-list">
+        <vc:track-list name="В тренде" icon-path="/img/trending.png" tracks="@tracks"/>
+    </section>
+
+    <section class="main__track-list track-list">
+        <vc:track-list name="Новое" icon-path="/img/new.png" tracks="@tracks"/>
+    </section>
+
+    <section class="main__track-list track-list">
+        <vc:track-list name="Популярное" icon-path="/img/popular.png" tracks="@tracks"/>
+    </section>
+</main>

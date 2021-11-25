@@ -1,25 +1,24 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - TrashGrounds</title>
-    <link rel="stylesheet" href="~/css/carbon-gray-100.min.css" />
-    <link rel="stylesheet" href="~/css/_fonts.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/header.css" />
-    <link rel="stylesheet" href="~/css/track-card.css"/>
-    <link rel="stylesheet" href="~/css/track-list.css"/>
-    <link rel="stylesheet" href="~/css/main-index.css" />
-</head>
-<body>
-<vc:header />
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>@ViewData["Title"] - TrashGrounds</title>
+        <link rel="stylesheet" href="~/lib/carbon-gray-100.min.css" />
+        <link rel="stylesheet" href="~/css/_fonts.css"/>
+        <link rel="stylesheet" href="~/css/_global.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/css/components/header.css" />
+        <link rel="stylesheet" href="~/css/components/track-card.css"/>
+        <link rel="stylesheet" href="~/css/components/track-list.css"/>
+        <link rel="stylesheet" href="~/css/pages/main-index.css" />
+        <link rel="stylesheet" href="~/css/pages/auth.css" />
+    </head>
+    <body>
+        @RenderBody()
 
-@RenderBody()
-
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-<script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
-@await RenderSectionAsync("Scripts", required: false)
-</body>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
 </html>
