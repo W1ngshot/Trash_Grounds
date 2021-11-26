@@ -10,7 +10,7 @@
     @if (ViewBag.Tracks is not null) {
       foreach (var track in ViewBag.Tracks)
       {
-          <vc:track-card rating="@track.Rating" preview-url="@track.PreviewUrl"  />
+          <vc:track-card track-name="@track.TrackName" author-name="@track.AuthorName" rating="@track.Rating" preview-url="@track.PreviewUrl"  />
       }
     }
   </div>

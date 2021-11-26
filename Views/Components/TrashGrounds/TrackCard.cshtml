@@ -5,7 +5,7 @@
 
 <div class="tg-track-card">
     <a class="tg-track-card__image-container" asp-controller="Track" asp-action="Index" asp-route-id="@ViewBag?.TrackId">
-        <img class="tg-track-card__image" src="@previewPlaceholderUrl" alt="track preview">
+        <img class="tg-track-card__image" src="@actualPreview" alt="track preview">
     </a>
     <div class="tg-track-card__info-container">
         <div class="tg-track-card__info">

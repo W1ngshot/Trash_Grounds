@@ -12,7 +12,5 @@ public class User
     
     public string Nickname { get; set; }
     
-    public int Avatar_asset_id { get; set; }
-    
     public DateTime Reg_date { get; set; }
 }

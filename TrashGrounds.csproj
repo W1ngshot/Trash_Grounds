@@ -7,14 +7,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\Img" />
-      <Folder Include="Assets\Music" />
       <Folder Include="wwwroot\fonts" />
       <Folder Include="wwwroot\img" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\assets\img\1.jpg" />
+      <None Include="wwwroot\assets\img\2.jpg" />
+      <None Include="wwwroot\assets\img\3.jpg" />
+      <None Include="wwwroot\assets\music\1.mp3" />
+      <None Include="wwwroot\assets\music\2.mp3" />
+      <None Include="wwwroot\assets\music\3.mp3" />
     </ItemGroup>
 
 </Project>

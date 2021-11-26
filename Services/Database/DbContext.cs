@@ -19,6 +19,6 @@ public class ApplicationContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        builder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=localBase;Trusted_Connection=True;");
+        builder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=newDataBase;Trusted_Connection=True;");
     }
 }
