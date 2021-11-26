@@ -1,10 +1,8 @@
-﻿@model string
-
-<div class="bx--form-item">
-    <label for="text-area-2" class="bx--label">@Model</label>
+﻿<div class="bx--form-item">
+    @if (ViewBag.Label is not null && ViewBag.Label != "") {
+        <label for="text-area-2" class="bx--label">@ViewBag.Label</label>
+    }
     <div class="bx--text-area__wrapper">
-        <textarea id="text-area-2"
-      class="bx--text-area bx--text-area--v2"
-      rows="4" cols="50" placeholder=""></textarea>
+        <textarea id="text-area-2" class="bx--text-area bx--text-area--v2" rows="4" cols="50" placeholder="@ViewBag.Placeholder"></textarea>
     </div>
 </div>

@@ -4,8 +4,11 @@ namespace TrashGrounds.Components;
 
 public class TextArea : ViewComponent
 {
-    public IViewComponentResult Invoke(string label)
+    public IViewComponentResult Invoke(string label = "", string placeholder = "")
     {
-        return View("~/Views/Components/Carbon/TextArea.cshtml", label);
+        ViewBag.Label = label;
+        ViewBag.Placeholder = placeholder;
+        
+        return View("~/Views/Components/Carbon/TextArea.cshtml");
     }
 }

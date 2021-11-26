@@ -1,0 +1,78 @@
+<vc:header />
+
+<main role="main" class="track tg-container tg-grid">
+    <section class="track__card card">
+        <img class="card__cover" src="/img/jew.jpg" alt="track cover">
+        <div class="card__main">
+            <div class="card__about">
+                <div class="card__header">
+                    <div class="card__explicit-icon">
+                        E
+                    </div>
+                    <h2 class="card__track-name">
+                        Я мох
+                    </h2>
+                    <div class="card__track-author">
+                        by Oxxxana
+                    </div>
+                    <img class="card__track-author-avatar" src="/img/jew.jpg" alt="avatar" />
+                </div>
+                <p class="card__description">
+                    Roblox — многопользовательская онлайн-платформа, которая позволяет пользователям играть в созданные другими пользователями игры и создавать свои собственные. Платформа содержит созданные пользователями игры и виртуальные миры, охватывающие широкий спектр жанров, от традиционных гонок и ролевых игр до симуляторов и полос препятствий[4]
+                </p>
+                <div class="card__genres">Mashup, Gachi, Rurap</div>
+            </div>
+            <div class="card__stats">
+                <div class="card__rating">
+                    <span class="card__rating-text">
+                        5.0 (228)
+                    </span>
+                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
+                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
+                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
+                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
+                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
+                </div>
+                <div class="card__listens">
+                    1337 прослушиваний
+                </div>
+            </div>
+            <div class="card__player player">
+                <button class="player__play">
+                    <img src="/img/play.svg" alt="play">
+                </button>
+                <div class="player__time player__time--left">1:30</div>
+                <div class="player__timeline-container">
+                    <div class="player__timeline">
+                        <div class="player__timeline-filled"></div>
+                    </div>
+                </div>
+                <div class="player__time player__time--right">1:20:30</div>
+                <a class="player__download" href="/">Скачать</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="track__comments comments">
+        <h3 class="comments__header">Комментарии</h3>
+        <vc:text-area placeholder="Введите комментарий" />
+        <vc:button class-name="comments__publish" text="Отправить" />
+
+        <div class="comments__published">
+            <vc:comment />
+            <vc:comment />
+            <vc:comment />
+            <vc:comment />
+        </div>
+    </section>
+
+    <section class="track__suggestions suggestions">
+        <h3 class="suggestions__header">От этого автора</h3>
+        <div class="suggestions__cards">
+            <vc:track-card rating="5.0" preview-url="" />
+            <vc:track-card rating="5.0" preview-url="" />
+            <vc:track-card rating="5.0" preview-url="" />
+            <vc:track-card rating="5.0" preview-url="" />
+        </div>
+    </section>
+</main>

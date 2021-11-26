@@ -1,0 +1,17 @@
+@{
+    var avatarPlaceholderUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=";
+    var displayAvatar = ViewBag?.AvatarUrl ?? avatarPlaceholderUrl;
+}
+
+<div class="tg-comment">
+    <img class="tg-comment__avatar" src="@displayAvatar" alt="avatar">
+    <div class="tg-comment__text">
+        <div class="tg-comment__header">
+            <div class="tg-comment__username">@ViewBag.Username</div>
+            <div class="tg-comment__timestamp" data-publish-timestamp="@ViewBag.PublishTimestamp">@ViewBag.TimeSincePublish</div>
+        </div>
+        <div class="tg-comment__content">
+            @ViewBag.Content
+        </div>
+    </div>
+</div>
