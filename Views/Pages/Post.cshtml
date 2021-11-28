@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="~/css/pages/post.css">
+
+<vc:header />
+
+@{
+    var title = ViewBag.IsEditing ? "Редактирование поста" : "Добавление поста";
+    var applyText = ViewBag.IsEditing ? "Обновить" : "Создать";
+}
+
+<div class="post-editor tg-container tg-grid">
+    <h2 class="post-editor__title">@title</h2>
+    
+    <div class="post-editor__text">
+        <h3 class="post-editor__field-title">Текст</h3>
+        <vc:text-area placeholder="Введите текст поста" />
+    </div>
+
+    <div class="post-editor__cover">
+        <vc:file-uploader label="Обложка" />
+    </div>
+
+    <vc:button class-name="post-editor__cancel-button" type="secondary" text="Отменить" />
+    <vc:button class-name="post-editor__apply-button" type="primary" text="@applyText" />
+</div>
