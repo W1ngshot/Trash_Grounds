@@ -1,0 +1,52 @@
+<vc:header />
+
+<link rel="stylesheet" href="~/css/pages/author.css">
+
+<main role="main" class="author tg-container">
+    <section class="author__card card">
+        <img class="card__cover" src="~/img/jew.jpg" alt="Author">
+        <div class="card__main">
+            <div class="card__header">
+                <h2 class="card__author-name">Oxxxana</h2>
+                <div class="card__register-date">на сайте с 27.11.2021</div>
+                <div class="card__social-network"></div>
+                <div class="card__social-network"></div>
+            </div>
+            <div class="card__description">
+                Я в своем познании настолько преисполнился, что я как будто бы уже
+                сто триллионов миллиардов лет проживаю на триллионах и
+                триллионах таких же планет, как эта Земля, мне этот мир абсолютно
+                понятен, и я здесь ищу только одного - покоя, умиротворения и
+                вот этой гармонии, от слияния с бесконечно вечным, от созерцания
+                великого фрактального подобия и от вот этого замечательного всеединства
+                существа, бесконечно вечного, куда ни посмотри, хоть вглубь - бесконечно
+                малое, хоть ввысь - бесконечное большое, понимаешь?
+            </div>
+        </div>
+    </section>
+
+    <section class="author__tracks-posts">
+        <div data-tabs class="bx--tabs">
+            <div class="bx--tabs-trigger" tabindex="0">
+                <a href="javascript:void(0)" class="bx--tabs-trigger-text" tabindex="-1"></a>
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path></svg>
+            </div>
+            <ul class="bx--tabs__nav bx--tabs__nav--hidden" role="tablist">
+                <li class="bx--tabs__nav-item bx--tabs__nav-item--selected" data-target=".author__tracks" role="tab"  aria-selected="true">
+                    <a tabindex="0" id="tab-link-1-default" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="author__tracks">Tracks</a>
+                </li>
+                <li class="bx--tabs__nav-item" data-target=".author__posts" role="tab">
+                    <a tabindex="0" id="tab-link-2-default" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab" aria-controls="author__posts">Posts</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="author__tracks" class="author__tracks" role="tabpanel" aria-labelledby="tab-link-1-default" aria-hidden="false">
+            <vc:author-track-list />
+        </div>
+        <div id="author__posts" class="author__posts" role="tabpanel" aria-labelledby="tab-link-2-default" aria-hidden="true" hidden>
+            <vc:post class-name="author__post" />
+            <vc:post class-name="author__post" />
+        </div>
+    </section>
+</main>
