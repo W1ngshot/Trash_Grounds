@@ -1,0 +1,29 @@
+.admin {
+    padding-top: 50px;
+}
+
+.admin__search {
+    margin-bottom: 40px;
+    max-width: 480px;
+}
+
+.admin__users {
+    background-color: #262626;
+    display: flex;
+}
+
+.admin__user-tracks {
+    text-decoration: none;
+    color: white;
+}
+
+.admin__user-tracks:hover {
+    text-decoration: underline;
+}
+
+.admin__ban {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #c6c6c6;
+}

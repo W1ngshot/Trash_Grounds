@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="~/css/pages/admin.css">
+
+<vc:header />
+
+<div class="admin tg-container">
+    <vc:search class-name="admin__search" placeholder="Введите имя пользователя" />
+
+    <div class="admin__users">
+        <section class="bx--structured-list">
+            <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Никнейм</div>
+                    <div class="bx--structured-list-th">Дата регистрации</div>
+                    <div class="bx--structured-list-th">Email</div>
+                    <div class="bx--structured-list-th">Треки</div>
+                    <div class="bx--structured-list-th"></div>
+                </div>
+            </div>
+            <div class="bx--structured-list-tbody">
+                @for (var i = 0; i < 5; i++) {
+                    <div class="bx--structured-list-row">
+                        <div class="bx--structured-list-td">
+                            Wingshot
+                        </div>
+                        <div class="bx--structured-list-td">
+                            28.11.2021
+                        </div>
+                        <div class="bx--structured-list-td">
+                            tutemail.com
+                        </div>
+                        <div class="bx--structured-list-td">
+                            <a class="admin__user-tracks" asp-controller="Author" asp-action="Tracks">Просмотреть треки (10)</a>
+                        </div>
+                        <div class="bx--structured-list-td">
+                            <button class="admin__ban">Заблокировать</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+</div>
