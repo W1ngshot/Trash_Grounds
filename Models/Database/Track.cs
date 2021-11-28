@@ -19,4 +19,6 @@ public class Track
     public User User { get; set; }
     
     public DateTime Upload_Date { get; set; }
+    
+    public int Listens_Count { get; set; }
 }

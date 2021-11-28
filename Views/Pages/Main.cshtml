@@ -1,13 +1,13 @@
 ﻿@using TrashGrounds.Services
 @{
     Layout = "_Layout";
-
-    var tracks = new[] {
-        new TrackCardModel { TrackName = "Aboba" },
-        new TrackCardModel { TrackName = "Bebra" },
-        new TrackCardModel { TrackName = "JoJo" }
-    };
+    
     //Tracks.AddDataToDB();
+    //Tracks.AddRatesToDB();
+    //Tracks.AddListensToDB(2, 3);
+    //Tracks.AddNewUserAndRates();
+    //Tracks.AddAnotherRateToDB();
+    //Tracks.AddNewTracksToDB();
 }
 
 <vc:header />
@@ -29,7 +29,7 @@
     </section>
 
     <section class="main__track-list track-list">
-        <vc:track-list name="В тренде" icon-path="/img/trending.png" tracks="@tracks"/>
+        <vc:track-list name="В тренде" icon-path="/img/trending.png" tracks="@Tracks.GetTrendingTracks()"/>
     </section>
 
     <section class="main__track-list track-list">
@@ -37,6 +37,6 @@
     </section>
 
     <section class="main__track-list track-list">
-        <vc:track-list name="Популярное" icon-path="/img/popular.png" tracks="@tracks"/>
+        <vc:track-list name="Популярное" icon-path="/img/popular.png" tracks="@Tracks.GetPopularTracks()"/>
     </section>
 </main>
