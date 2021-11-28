@@ -100,60 +100,71 @@ namespace TrashGrounds.Services
             }
         }
         */
+        public static Tuple<double, int> GetTrackRateAndCount(this Track track)
+        {
+            using ApplicationContext db = new ApplicationContext();
+            var trackRates = db.Rates
+                .Include(r => r.Track)
+                .Where(x => x.Track == track)
+                .ToList();
+            var rate = 0.0;
+            var ratesCount = trackRates.Count;
+            if (ratesCount != 0)
+            {
+                var ratesSum = trackRates.Sum(x => x.Rating);
+                rate = (double)ratesSum / ratesCount;
+                rate = Math.Round(rate, 1);
+            }
+            return new Tuple<double, int>(rate, trackRates.Count);
+        }
         
         private static double GetTrackRate(this Track track)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using ApplicationContext db = new ApplicationContext();
+            var trackRates = db.Rates
+                .Include(r => r.Track)
+                .Where(x => x.Track == track)
+                .ToList();
+            var rate = 0.0;
+            var ratesCount = trackRates.Count;
+            if (ratesCount != 0)
             {
-                var trackRates = db.Rates
-                    .Include(r => r.Track)
-                    .Where(x => x.Track == track)
-                    .ToList();
-                var rate = 0.0;
-                var ratesCount = trackRates.Count;
-                if (ratesCount != 0)
-                {
-                    var ratesSum = trackRates.Sum(x => x.Rating);
-                    rate = (double)ratesSum / ratesCount;
-                    rate = Math.Round(rate, 1);
-                }
-                return rate;
+                var ratesSum = trackRates.Sum(x => x.Rating);
+                rate = (double)ratesSum / ratesCount;
+                rate = Math.Round(rate, 1);
             }
+            return rate;
         }
         
         private static double GetTrackPopularity(this Track track)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using ApplicationContext db = new ApplicationContext();
+            var trackRates = db.Rates
+                .Include(r => r.Track)
+                .Where(x => x.Track == track)
+                .ToList();
+            var trackPopularity = 0.0;
+            var ratesCount = trackRates.Count;
+            if (ratesCount != 0)
             {
-                var trackRates = db.Rates
-                    .Include(r => r.Track)
-                    .Where(x => x.Track == track)
-                    .ToList();
-                var trackPopularity = 0.0;
-                var ratesCount = trackRates.Count;
-                if (ratesCount != 0)
-                {
-                    var ratesSum = trackRates.Sum(x => x.Rating);
-                    trackPopularity = (double)ratesSum / ratesCount;
-                    trackPopularity *= Math.Log10(ratesCount);
-                }
-                return trackPopularity;
+                var ratesSum = trackRates.Sum(x => x.Rating);
+                trackPopularity = (double)ratesSum / ratesCount;
+                trackPopularity *= Math.Log10(ratesCount);
             }
+            return trackPopularity;
         }
         
         private static int GetNumberOfRatesLastWeek(this Track track)
         {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                const int secondsInWeek = 604800;
-                var ratesCount = db.Rates
-                    .Include(r => r.Track)
-                    .Where(r => r.Track == track)
-                    .ToList()
-                    .Where(r => DateTime.Now.Subtract(r.Date).TotalSeconds <= secondsInWeek)
-                    .ToList();
-                return ratesCount.Count;
-            }
+            using ApplicationContext db = new ApplicationContext();
+            const int secondsInWeek = 604800;
+            var ratesCount = db.Rates
+                .Include(r => r.Track)
+                .Where(r => r.Track == track)
+                .ToList()
+                .Where(r => DateTime.Now.Subtract(r.Date).TotalSeconds <= secondsInWeek)
+                .ToList();
+            return ratesCount.Count;
         }
 
         private static IEnumerable<TrackCardModel> CreateCardModels(List<Track> tracks)
@@ -162,7 +173,6 @@ namespace TrashGrounds.Services
             foreach (var track in tracks)
             {
                 var rate = GetTrackRate(track);
-                Console.WriteLine(track.Id);
                 var item = new TrackCardModel { TrackId = track.Id, TrackName = track.Title, AuthorName = track.User.Nickname, AuthorId = track.User.Id, Rating = rate, PreviewUrl = $@"/assets/img/{track.Id}.jpg"};
                 result.Add(item);
             }
@@ -172,47 +182,41 @@ namespace TrashGrounds.Services
 
         public static IEnumerable<TrackCardModel> GetPopularTracks()
         {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                var tracks = db.Tracks
-                    .Include(t => t.User)
-                    .Select(t => new Tuple<Track, double>(t, t.GetTrackPopularity()))
-                    .ToList()
-                    .OrderByDescending(t => t.Item2)
-                    .ThenByDescending(t => t.Item1.GetTrackRate())
-                    .Select(t => t.Item1)
-                    .Take(6)
-                    .ToList();
-                return CreateCardModels(tracks);
-            }
+            using ApplicationContext db = new ApplicationContext();
+            var tracks = db.Tracks
+                .Include(t => t.User)
+                .Select(t => new Tuple<Track, double>(t, t.GetTrackPopularity()))
+                .ToList()
+                .OrderByDescending(t => t.Item2)
+                .ThenByDescending(t => t.Item1.GetTrackRate())
+                .Select(t => t.Item1)
+                .Take(6)
+                .ToList();
+            return CreateCardModels(tracks);
         }
 
         public static IEnumerable<TrackCardModel> GetNewTracks()
         {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                var tracks = db.Tracks
-                    .Include(t => t.User)
-                    .OrderByDescending(track => track.Upload_Date)
-                    .Take(6)
-                    .ToList();
-                return CreateCardModels(tracks);
-            }
+            using ApplicationContext db = new ApplicationContext();
+            var tracks = db.Tracks
+                .Include(t => t.User)
+                .OrderByDescending(track => track.Upload_Date)
+                .Take(6)
+                .ToList();
+            return CreateCardModels(tracks);
         }
 
         public static IEnumerable<TrackCardModel> GetTrendingTracks()
         {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                var tracks = db.Tracks
-                    .Include(t => t.User)
-                    .ToList()
-                    .OrderByDescending(t => t.GetNumberOfRatesLastWeek())
-                    .ThenByDescending(t => t.GetTrackRate())
-                    .Take(6)
-                    .ToList();
-                return CreateCardModels(tracks);
-            }
+            using ApplicationContext db = new ApplicationContext();
+            var tracks = db.Tracks
+                .Include(t => t.User)
+                .ToList()
+                .OrderByDescending(t => t.GetNumberOfRatesLastWeek())
+                .ThenByDescending(t => t.GetTrackRate())
+                .Take(6)
+                .ToList();
+            return CreateCardModels(tracks);
         }
     }
 }

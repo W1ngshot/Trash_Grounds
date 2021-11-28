@@ -5,8 +5,8 @@ namespace TrashGrounds.Controllers;
 
 public class TrackController : Controller
 {
-    public IActionResult Index()
+    public IActionResult Index(int id)
     {
-        return View("~/Views/Pages/Track.cshtml");
+        return View("~/Views/Pages/Track.cshtml", id);
     }
 }

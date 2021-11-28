@@ -72,7 +72,7 @@
     font-size: 14px;
     line-height: 18px;
     max-width: 480px;
-    max-height: 108px;
+    height: 108px;
     overflow: hidden;
     text-overflow: ellipsis;
 }

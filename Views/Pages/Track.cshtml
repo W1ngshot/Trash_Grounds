@@ -1,33 +1,48 @@
 <vc:header />
+@model int
+@using TrashGrounds.Services.Database;
+@using TrashGrounds.Services;
+@{
+    var trackIndex = Model;
+    Console.WriteLine(trackIndex);
+    using ApplicationContext db = new ApplicationContext();
+    var track = db.Tracks.Find(trackIndex);
+    var user = db.Users.Find(track.UserId);
+    var genre = db.Genres.Find(track.GenreId);
+    var rates = track.GetTrackRateAndCount();
+}
 
 <link rel="stylesheet" href="~/css/pages/track.css">
 
 <main role="main" class="track tg-container tg-grid">
     <section class="track__card card">
-        <img class="card__cover" src="/img/jew.jpg" alt="track cover">
+        <img class="card__cover" src=@($"/assets/img/{track.Id}.jpg") alt="track cover">
         <div class="card__main">
             <div class="card__about">
                 <div class="card__header">
-                    <div class="card__explicit-icon">
-                        E
-                    </div>
+                    @if (track.IsExplicit)
+                    {
+                        <div class="card__explicit-icon">
+                            E
+                        </div>
+                    }
                     <h2 class="card__track-name">
-                        Я мох
+                        @track.Title
                     </h2>
                     <div class="card__track-author">
-                        by Oxxxana
+                        by @user.Nickname
                     </div>
-                    <img class="card__track-author-avatar" src="/img/jew.jpg" alt="avatar" />
+                    <img class="card__track-author-avatar" src="/img/jew.jpg" alt="avatar"/>
                 </div>
                 <p class="card__description">
-                    Roblox — многопользовательская онлайн-платформа, которая позволяет пользователям играть в созданные другими пользователями игры и создавать свои собственные. Платформа содержит созданные пользователями игры и виртуальные миры, охватывающие широкий спектр жанров, от традиционных гонок и ролевых игр до симуляторов и полос препятствий[4]
+                    @track.Description
                 </p>
-                <div class="card__genres">Mashup, Gachi, Rurap</div>
+                <div class="card__genres">@genre.Name</div>
             </div>
             <div class="card__stats">
                 <div class="card__rating">
                     <span class="card__rating-text">
-                        5.0 (228)
+                        @rates.Item1 (@rates.Item2)
                     </span>
                     <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
                     <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
@@ -36,7 +51,7 @@
                     <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
                 </div>
                 <div class="card__listens">
-                    1337 прослушиваний
+                    @track.Listens_Count прослушиваний
                 </div>
             </div>
             <div class="card__player player">
