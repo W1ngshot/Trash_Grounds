@@ -13,7 +13,6 @@ public class TrackCard : ViewComponent
         long authorId = 0,
         string authorName = "Author name")
     {
-
         ViewBag.TrackId = trackId;
         ViewBag.TrackName = trackName;
         ViewBag.AuthorId = authorId;

@@ -1,14 +1,23 @@
+@model int
+@using TrashGrounds.Services.Database;
+@using TrashGrounds.Services;
+@{
+    var authorIndex = Model;
+    using ApplicationContext db = new ApplicationContext();
+    var user = db.Users.Find(authorIndex);
+}
+
 <vc:header />
 
 <link rel="stylesheet" href="~/css/pages/author.css">
 
 <main role="main" class="author tg-container">
     <section class="author__card card">
-        <img class="card__cover" src="~/img/jew.jpg" alt="Author">
+        <img class="card__cover" src=@($"/assets/users_img/{user.Id}.jpg") alt="Author">
         <div class="card__main">
             <div class="card__header">
-                <h2 class="card__author-name">Oxxxana</h2>
-                <div class="card__register-date">на сайте с 27.11.2021</div>
+                <h2 class="card__author-name">@user.Nickname</h2>
+                <div class="card__register-date">на сайте с @user.Reg_date.ToString("d")</div>
                 <div class="card__social-network"></div>
                 <div class="card__social-network"></div>
             </div>
@@ -42,7 +51,7 @@
         </div>
 
         <div id="author__tracks" class="author__tracks" role="tabpanel" aria-labelledby="tab-link-1-default" aria-hidden="false">
-            <vc:author-track-list />
+            <vc:author-track-list user=@user />
         </div>
         <div id="author__posts" class="author__posts" role="tabpanel" aria-labelledby="tab-link-2-default" aria-hidden="true" hidden>
             <vc:post class-name="author__post" />

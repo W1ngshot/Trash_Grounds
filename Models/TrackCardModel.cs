@@ -8,4 +8,5 @@ public class TrackCardModel
     public string AuthorName { get; set; } = nameof(AuthorName);
     public string? PreviewUrl { get; set; }
     public double Rating { get; set; } = 0;
+    public int ListensCount { get; set; } = 0;
 }

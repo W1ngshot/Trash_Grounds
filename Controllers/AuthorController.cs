@@ -5,9 +5,9 @@ namespace TrashGrounds.Controllers;
 
 public class AuthorController : Controller
 {
-    public IActionResult Index() => Tracks();
-    public IActionResult Tracks()
+    public IActionResult Index(int id) => Tracks(id);
+    public IActionResult Tracks(int id)
     {
-        return View("~/Views/Pages/Author.cshtml");
+        return View("~/Views/Pages/Author.cshtml", id);
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TrashGrounds.Components;
 
-public class Comment : ViewComponent
+public class CommentComp : ViewComponent
 {
     public IViewComponentResult Invoke(string? avatarUrl = null, string username = "Username", string content = "Comment body", DateTime timestamp = new DateTime())
     {

@@ -1,3 +1,12 @@
+@using TrashGrounds.Services.Database;
+@using TrashGrounds.Services;
+
+@{
+    using ApplicationContext db = new ApplicationContext();
+    var users = db.Users.ToList();
+    var tracks = db.Tracks.ToList();
+}
+
 <link rel="stylesheet" href="~/css/pages/admin.css">
 
 <vc:header />
@@ -17,19 +26,21 @@
                 </div>
             </div>
             <div class="bx--structured-list-tbody">
-                @for (var i = 0; i < 5; i++) {
+                @foreach (var user in users)
+                {
+                    var userTracksCount = tracks.Count(t => t.UserId == user.Id);
                     <div class="bx--structured-list-row">
                         <div class="bx--structured-list-td">
-                            Wingshot
+                            @user.Nickname
                         </div>
                         <div class="bx--structured-list-td">
-                            28.11.2021
+                            @user.Reg_date
                         </div>
                         <div class="bx--structured-list-td">
-                            tutemail.com
+                            @user.Email
                         </div>
                         <div class="bx--structured-list-td">
-                            <a class="admin__user-tracks" asp-controller="Author" asp-action="Tracks">Просмотреть треки (10)</a>
+                            <a class="admin__user-tracks" asp-controller="Author" asp-action="Tracks" asp-route-id=@user.Id >Просмотреть треки (@userTracksCount)</a>
                         </div>
                         <div class="bx--structured-list-td">
                             <button class="admin__ban">Заблокировать</button>

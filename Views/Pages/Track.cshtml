@@ -1,16 +1,17 @@
-<vc:header />
 @model int
 @using TrashGrounds.Services.Database;
 @using TrashGrounds.Services;
 @{
     var trackIndex = Model;
-    Console.WriteLine(trackIndex);
     using ApplicationContext db = new ApplicationContext();
     var track = db.Tracks.Find(trackIndex);
     var user = db.Users.Find(track.UserId);
+    var comments = Comments.GetTrackComments(track.Id);
     var genre = db.Genres.Find(track.GenreId);
     var rates = track.GetTrackRateAndCount();
 }
+
+<vc:header />
 
 <link rel="stylesheet" href="~/css/pages/track.css">
 
@@ -44,11 +45,17 @@
                     <span class="card__rating-text">
                         @rates.Item1 (@rates.Item2)
                     </span>
-                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
-                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
-                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
-                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
-                    <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
+                    @{
+                        var stars = Math.Floor(rates.Item1);
+                        for (int i = 0; i < stars; i++)
+                        {
+                            <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
+                        }
+                        for (int i = 0; i < 5 - stars; i++)
+                        {
+                            <button class="card__rating-star"><img src="/img/pog-disabled.png" alt="grey rating star"></button>
+                        }
+                    }
                 </div>
                 <div class="card__listens">
                     @track.Listens_Count прослушиваний
@@ -74,22 +81,27 @@
         <h3 class="comments__header">Комментарии</h3>
         <vc:text-area placeholder="Введите комментарий" />
         <vc:button class-name="comments__publish" text="Отправить" />
-
+        
         <div class="comments__published">
-            <vc:comment />
-            <vc:comment />
-            <vc:comment />
-            <vc:comment />
+            @{
+                //TODO finish comments
+                foreach (var comment in comments)
+                {
+                    <vc:comment-comp username=@comment.User.Nickname content=@comment.Message avatar-url="~/assets/users_img/{@comment.UserId}.jpg" timestamp=@comment.Date />
+                }
+            }
         </div>
     </section>
 
     <section class="track__suggestions suggestions">
         <h3 class="suggestions__header">От этого автора</h3>
         <div class="suggestions__cards">
-            <vc:track-card rating="5.0" preview-url="" />
-            <vc:track-card rating="5.0" preview-url="" />
-            <vc:track-card rating="5.0" preview-url="" />
-            <vc:track-card rating="5.0" preview-url="" />
+            @{
+                foreach (var trackCard in Tracks.GetAnotherTracksFromUser(track.Id, user).Take(4).ToList())
+                {
+                    <vc:track-card track-name=@trackCard.TrackName author-name=@track.User.Nickname rating=@trackCard.Rating track-id=@trackCard.TrackId preview-url=@trackCard.PreviewUrl author-id=@trackCard.AuthorId />
+                }
+            }
         </div>
     </section>
 </main>

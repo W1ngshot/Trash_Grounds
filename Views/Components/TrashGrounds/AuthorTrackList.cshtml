@@ -1,3 +1,7 @@
+@model User
+@using TrashGrounds.Services;
+@using TrashGrounds.Models.Database;
+
 <section class="bx--structured-list">
     <div class="bx--structured-list-thead">
         <div class="bx--structured-list-row bx--structured-list-row--header-row">
@@ -9,22 +13,22 @@
         </div>
     </div>
     <div class="bx--structured-list-tbody">
-        @for (var i = 0; i < 5; i++) {
-            <a class="bx--structured-list-row author-track-list__row" asp-action="Index" asp-controller="Track">
+        @foreach (var track in Tracks.GetUserTracks(Model)) {
+            <a class="bx--structured-list-row author-track-list__row" asp-action="Index" asp-controller="Track" asp-route-id="@track.TrackId">
                 <div class="bx--structured-list-td">
-                    <img class="author-track-list__avatar" src="/img/jew.jpg" alt="avatar">
+                    <img class="author-track-list__avatar" src=@track.PreviewUrl alt="avatar">
                 </div>
                 <div class="bx--structured-list-td">
-                    Признаки развода
+                    @track.TrackName
                 </div>
                 <div class="bx--structured-list-td">
-                    1239
+                    @track.ListensCount
                 </div>
                 <div class="bx--structured-list-td">
-                    4.5
+                    @track.Rating
                 </div>
                 <div class="bx--structured-list-td">
-                    3:22
+                    3:22 
                 </div>
             </a>
         }
