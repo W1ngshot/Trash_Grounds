@@ -4,13 +4,12 @@ namespace TrashGrounds.Components;
 
 public class Button : ViewComponent
 {
-    public IViewComponentResult Invoke(string style = "primary", string text = "", string size = "large", string className = "", string type = "button")
+    public IViewComponentResult Invoke(string type = "primary", string text = "", string size = "large", string className = "")
     {
-        ViewBag.Style = style;
+        ViewBag.Type = type;
         ViewBag.Size = size;
         ViewBag.Text = text;
         ViewBag.ClassName = className;
-        ViewBag.Type = type;
 
         return View("~/Views/Components/Carbon/Button.cshtml");
     }

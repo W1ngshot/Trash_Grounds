@@ -1,0 +1,107 @@
+@model int
+@using TrashGrounds.Services.Database;
+@using TrashGrounds.Services;
+@{
+    var trackIndex = Model;
+    using ApplicationContext db = new ApplicationContext();
+    var track = db.Tracks.Find(trackIndex);
+    var user = db.Users.Find(track.UserId);
+    var comments = Comments.GetTrackComments(track.Id).OrderByDescending(c => c.Date).ToList();
+    var genre = db.Genres.Find(track.GenreId);
+    var rates = track.GetTrackRateAndCount();
+}
+
+<vc:header />
+
+<link rel="stylesheet" href="~/css/pages/track.css">
+
+<main role="main" class="track tg-container tg-grid">
+    <section class="track__card card">
+        <img class="card__cover" src=@($"/assets/img/{track.Id}.jpg") alt="track cover">
+        <div class="card__main">
+            <div class="card__about">
+                <div class="card__header">
+                    @if (track.IsExplicit)
+                    {
+                        <div class="card__explicit-icon">
+                            E
+                        </div>
+                    }
+                    <h2 class="card__track-name">
+                        @track.Title
+                    </h2>
+                    <div class="card__track-author">
+                        by @user.Nickname
+                    </div>
+                    <img class="card__track-author-avatar" src="/img/jew.jpg" alt="avatar"/>
+                </div>
+                <p class="card__description">
+                    @track.Description
+                </p>
+                <div class="card__genres">@genre.Name</div>
+            </div>
+            <div class="card__stats">
+                <div class="card__rating">
+                    <span class="card__rating-text">
+                        @rates.Item1 (@rates.Item2)
+                    </span>
+                    @{
+                        var stars = Math.Floor(rates.Item1);
+                        for (int i = 0; i < stars; i++)
+                        {
+                            <button class="card__rating-star"><img src="/img/pog.png" alt="rating star"></button>
+                        }
+                        for (int i = 0; i < 5 - stars; i++)
+                        {
+                            <button class="card__rating-star"><img src="/img/pog-disabled.png" alt="grey rating star"></button>
+                        }
+                    }
+                </div>
+                <div class="card__listens">
+                    @track.Listens_Count прослушиваний
+                </div>
+            </div>
+            <div class="card__player player">
+                <button class="player__play">
+                    <img src="/img/play.svg" alt="play">
+                </button>
+                <div class="player__time player__time--left">1:30</div>
+                <div class="player__timeline-container">
+                    <div class="player__timeline">
+                        <div class="player__timeline-filled"></div>
+                    </div>
+                </div>
+                <div class="player__time player__time--right">1:20:30</div>
+                <a class="player__download" href="/">Скачать</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="track__comments comments">
+        <h3 class="comments__header">Комментарии</h3>
+        <vc:text-area placeholder="Введите комментарий" />
+        <vc:button class-name="comments__publish" text="Отправить" />
+        
+        <div class="comments__published">
+            @{
+                //TODO finish comments
+                foreach (var comment in comments)
+                {
+                    <vc:comment-comp username=@comment.User.Nickname content=@comment.Message avatar-url=@($"/assets/users_img/{user.Id}.jpg") timestamp=@comment.Date />
+                }
+            }
+        </div>
+    </section>
+
+    <section class="track__suggestions suggestions">
+        <h3 class="suggestions__header">От этого автора</h3>
+        <div class="suggestions__cards">
+            @{
+                foreach (var trackCard in Tracks.GetAnotherTracksFromUser(track.Id, user).Take(4).ToList())
+                {
+                    <vc:track-card track-name=@trackCard.TrackName author-name=@track.User.Nickname rating=@trackCard.Rating track-id=@trackCard.TrackId preview-url=@trackCard.PreviewUrl author-id=@trackCard.AuthorId />
+                }
+            }
+        </div>
+    </section>
+</main>

@@ -1,0 +1,39 @@
+@{
+    var title = ViewBag.IsEditing ? "Редактирование трека" : "Добавление трека";
+    var applyText = ViewBag.IsEditing ? "Обновить" : "Опубликовать";
+}
+
+<vc:header />
+
+<link rel="stylesheet" href="~/css/pages/track-edit.css">
+
+<main role="main" class="track-edit tg-container tg-grid">
+    <h2 class="track-edit__title">
+        @title
+    </h2>
+
+    <section class="track-edit__main-info main-info">
+        <h3 class="track-edit__section-title main-info__title">
+            Основная информация
+        </h3>
+        <vc:text-input label="Название" class-name="main-info__input-field"/>
+        <vc:text-area label="Описание" class-name="main-info__input-field"/>
+        <vc:dropdown label="Жанры" class-name="main-info__input-field"/>
+        <vc:checkbox label="Explicit"/>
+    </section>
+
+    <section class="track-edit__cover-upload">
+        <vc:file-uploader label="Обложка" description="Максимальный размер 2МБ. Допустимые форматы: .png, .jpg, .webp" />
+    </section>
+
+    @if (!ViewBag.IsEditing) {
+        <section class="track-edit__track-upload">
+            <vc:file-uploader label="Трек" description="Максимальный размер 20МБ. Допустимый формат: .mp3" />
+        </section>
+    }
+
+    <section class="track-edit__action-buttons">
+        <vc:button text="Отменить" type="secondary"/>
+        <vc:button text="@applyText" type="primary"/>
+    </section>
+</main>

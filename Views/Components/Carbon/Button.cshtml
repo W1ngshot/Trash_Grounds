@@ -1,9 +1,9 @@
 ﻿@{
-    var buttonClass = $"{ViewBag.ClassName} bx--btn bx--btn--{ViewBag.Style}";
+    var buttonClass = $"{ViewBag.ClassName} bx--btn bx--btn--{ViewBag.Type}";
     if (ViewBag.Size == "small")
         buttonClass += " bx--btn--sm";
 }
 
-<button class="@buttonClass" type="@ViewBag.Type">
+<button class="@buttonClass" type="button">
     @ViewBag.Text
 </button>
