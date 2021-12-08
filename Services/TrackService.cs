@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using TrashGrounds.Services.Database;
 using TrashGrounds.Models.Database;
@@ -99,7 +100,17 @@ public static class Tracks
             db.SaveChanges();
         }
     }
+    
+    public static void AddCommentToTracks()
+    {
+        using ApplicationContext db = new ApplicationContext();
+        var comment = new Comment {UserId = 1, Date = DateTime.Now, TrackId = 1, Message = "Тестовый коммент"};
+        db.Comments.Add(comment);
+        db.SaveChanges();
+    }
+    
     */
+    
     public static Tuple<double, int> GetTrackRateAndCount(this Track track)
     {
         using ApplicationContext db = new ApplicationContext();
