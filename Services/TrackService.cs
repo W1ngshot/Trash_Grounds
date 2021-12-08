@@ -11,7 +11,6 @@ namespace TrashGrounds.Services;
 
 public static class Tracks
 {
-    /* DB helpers
     public static void AddDataToDB()
     {
         using (ApplicationContext db = new ApplicationContext())
@@ -108,8 +107,6 @@ public static class Tracks
         db.Comments.Add(comment);
         db.SaveChanges();
     }
-    
-    */
     
     public static Tuple<double, int> GetTrackRateAndCount(this Track track)
     {

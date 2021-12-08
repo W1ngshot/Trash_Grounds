@@ -4,7 +4,8 @@
         <div class="bx--text-input__field-wrapper">
             <input id="text-input-3" type="password"
                    class="bx--text-input bx--password-input"
-                   placeholder="" data-toggle-password-visibility>
+                   placeholder="" data-toggle-password-visibility
+                   name="@ViewBag.Name">
             <button type="button"
                     class="bx--text-input--password__visibility__toggle bx--btn bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center">
                 <span class="bx--assistive-text">Show password</span>
@@ -19,7 +20,7 @@ else
     <div class="bx--form-item bx--text-input-wrapper">
         <label for="text-input-3" class="bx--label">@ViewBag.Label</label>
         <div class="bx--text-input__field-wrapper">
-            <input id="text-input-3" type="@ViewBag.Type" class="bx--text-input" placeholder="">
+            <input id="text-input-3" type="@ViewBag.Type" class="bx--text-input" name="@ViewBag.Name">
         </div>
     </div>
 }
