@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="~/css/pages/account.css">
+
+<vc:header />
+
+<main role="main" class="account tg-grid tg-container">
+    <h2 class="account__title">
+        Аккаунт
+    </h2>
+
+    <section class="account__info">
+        <div class="account__info-item">Имя пользователя: Wingshot</div>
+        <div class="account__info-item">Email: sample@mail.ru</div>
+    </section>
+
+    <section class="account__status">
+        <h3 class="account__status-title">Изменение статуса</h3>
+        <vc:text-area class-name="account__input" />
+        <vc:button type="tertiary" text="Обновить" />
+    </section> 
+
+    <section class="account__password">
+        <h3 class="account__password-title">Изменение пароля</h3>
+        <vc:text-input class-name="account__input" type="password" label="Старый пароль"/>
+        <vc:text-input class-name="account__input" type="password" label="Новый пароль"/>
+        <vc:button type="tertiary" text="Обновить" />
+    </section>
+
+    <section class="account__avatar">
+        <div class="account__current-avatar-container">
+            <img class="account__current-avatar" src="/assets/img/mox.jpg" alt="current avatar">
+        </div>
+        
+        <vc:file-uploader label="Загрузите новую фотографию" description="Максимальный размер 2МБ. Допустимые форматы: .png, .jpg, .webp" />
+    </section>
+</main>
