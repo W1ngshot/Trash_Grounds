@@ -1,0 +1,37 @@
+@{
+    var testTracks = new TrackCardModel[]{
+        new TrackCardModel { TrackName = "Sample 1" },
+        new TrackCardModel { TrackName = "Sample 2" },
+        new TrackCardModel { TrackName = "Sample 3" },
+        new TrackCardModel { TrackName = "Sample 4" },
+        new TrackCardModel { TrackName = "Sample 5" },
+    };
+}
+
+<vc:header />
+
+<link rel="stylesheet" href="~/css/pages/search.css">
+
+<main role="main" class="search tg-container">
+    <section class="search__params params">
+        <h2 class="params__title">Поиск</h2>
+        <div class="params__main">
+            <div class="params__input-group">
+                <vc:dropdown label="Сортировка" class-name="params__input" is-light="true" />
+                <vc:dropdown label="Соответствие" class-name="params__input" is-light="true" />
+            </div>
+            <div class="params__input-group">
+                <vc:text-input label="Автор" class-name="params__input" is-light="true" />
+                <vc:text-input label="Название трека" class-name="params__input" is-light="true" />
+            </div>
+            <div class="params__right-block">
+                <vc:checkbox label="Показать Explicit" class-name="params__checkbox" is-light="true" />
+                <vc:button type="primary" text="Поиск" class-name="params__button" is-light="true" />
+            </div>
+        </div>
+    </section>
+
+    <section class="search__result">
+        <vc:table-track-list tracks=@testTracks />
+    </section>
+</main>

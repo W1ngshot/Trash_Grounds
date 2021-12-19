@@ -1,0 +1,10 @@
+.table-track-list__avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  transform: translateY(7px);
+}
+
+.table-track-list__row {
+  text-decoration: none;
+}

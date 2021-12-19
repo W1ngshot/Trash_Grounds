@@ -1,0 +1,36 @@
+@model IEnumerable<TrackCardModel>;
+@using TrashGrounds.Services;
+@using TrashGrounds.Models.Database;
+
+<section class="bx--structured-list">
+    <div class="bx--structured-list-thead">
+        <div class="bx--structured-list-row bx--structured-list-row--header-row">
+            <div class="bx--structured-list-th"></div>
+            <div class="bx--structured-list-th">Название</div>
+            <div class="bx--structured-list-th">Прослушивания</div>
+            <div class="bx--structured-list-th">Средняя оценка</div>
+            <div class="bx--structured-list-th">Продолжительность</div>
+        </div>
+    </div>
+    <div class="bx--structured-list-tbody">
+        @foreach (var track in Model ?? new List<TrackCardModel>()) {
+            <a class="bx--structured-list-row table-track-list__row" asp-action="Index" asp-controller="Track" asp-route-id="@track.TrackId">
+                <div class="bx--structured-list-td">
+                    <img class="table-track-list__avatar" src=@track.PreviewUrl alt="avatar">
+                </div>
+                <div class="bx--structured-list-td">
+                    @track.TrackName
+                </div>
+                <div class="bx--structured-list-td">
+                    @track.ListensCount
+                </div>
+                <div class="bx--structured-list-td">
+                    @track.Rating
+                </div>
+                <div class="bx--structured-list-td">
+                    3:22 
+                </div>
+            </a>
+        }
+    </div>
+</section>

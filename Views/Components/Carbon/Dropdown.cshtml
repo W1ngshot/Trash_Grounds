@@ -1,7 +1,11 @@
-﻿<div class="@ViewBag.ClassName bx--form-item">
-    <div class="bx--dropdown__wrapper">
+﻿@{
+    var lightClass = ViewBag.IsLight ? "bx--dropdown--light" : "";
+}
+
+<div class="@ViewBag.ClassName bx--form-item">
+    <div class="bx--dropdown__wrapper" style="display: flex; flex-direction: column">
         <span id="example-1i7ng3rpzyp-label" class="bx--label">@ViewBag.Label</span>
-        <div data-dropdown data-value class="bx--dropdown">
+        <div data-dropdown data-value class="bx--dropdown @lightClass">
             <button class="bx--dropdown-text" aria-haspopup="true" aria-expanded="false" aria-controls="example-1i7ng3rpzyp-menu" aria-labelledby="example-1i7ng3rpzyp-label example-1i7ng3rpzyp-value" type="button">
                 <span class="bx--dropdown-text__inner" id="example-1i7ng3rpzyp-value"> Dropdown option </span>
                 <span class="bx--dropdown__arrow-container">

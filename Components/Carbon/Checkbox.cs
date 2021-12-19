@@ -4,8 +4,11 @@ namespace TrashGrounds.Components;
 
 public class Checkbox : ViewComponent
 {
-    public IViewComponentResult Invoke(string label)
+    public IViewComponentResult Invoke(string label, string className)
     {
-        return View("~/Views/Components/Carbon/Checkbox.cshtml", label);
+        ViewBag.Label = label;
+        ViewBag.ClassName = className;
+
+        return View("~/Views/Components/Carbon/Checkbox.cshtml");
     }
 }

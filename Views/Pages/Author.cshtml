@@ -5,6 +5,7 @@
     var authorIndex = Model;
     using ApplicationContext db = new ApplicationContext();
     var user = db.Users.Find(authorIndex);
+    var tracks = Tracks.GetUserTracks(user);
 }
 
 <vc:header />
@@ -51,7 +52,7 @@
         </div>
 
         <div id="author__tracks" class="author__tracks" role="tabpanel" aria-labelledby="tab-link-1-default" aria-hidden="false">
-            <vc:author-track-list user=@user />
+            <vc:table-track-list tracks=@tracks />
         </div>
         <div id="author__posts" class="author__posts" role="tabpanel" aria-labelledby="tab-link-2-default" aria-hidden="true" hidden>
             <vc:post class-name="author__post" />

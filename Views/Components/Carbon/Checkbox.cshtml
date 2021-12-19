@@ -1,7 +1,5 @@
-﻿@model string
-
-<div class="bx--form-item bx--checkbox-wrapper">
+﻿<div class="bx--form-item bx--checkbox-wrapper @ViewBag.ClassName">
     <input id="bx--checkbox-new" class="bx--checkbox" type="checkbox" value="new"
             name="checkbox" checked>
-    <label for="bx--checkbox-new" class="bx--checkbox-label">@Model</label>
+    <label for="bx--checkbox-new" class="bx--checkbox-label">@ViewBag.Label</label>
 </div>
