@@ -10,12 +10,6 @@ public class User
     
     public string? Status { get; set; }
 
-    public List<byte> PasswordBytes
-    {
-        get => Password.Split(',').Select(byte.Parse).ToList();
-        set => Password = string.Join(",", value);
-    }
-
     public string Password { get; set; }
 
     public string Nickname { get; set; }

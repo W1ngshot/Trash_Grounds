@@ -2,9 +2,9 @@
 
 public static class SessionCaseStorage
 {
-    private static HashSet<string> keys;
-    private static Dictionary<string, DateTime> keysExpireDates;
-    private static Dictionary<string, int> keysOwnersIds;
+    private static HashSet<string> keys = new HashSet<string>();
+    private static Dictionary<string, DateTime> keysExpireDates = new Dictionary<string, DateTime>();
+    private static Dictionary<string, int> keysOwnersIds = new Dictionary<string, int>();
 
     public static void AddNewSession(string key, int userId)
     {

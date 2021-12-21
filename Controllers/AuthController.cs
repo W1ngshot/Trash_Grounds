@@ -37,15 +37,20 @@ public class AuthController : Controller
         return Convert.ToBase64String(randomBytes);
     }
 
+    private string ConvertPassword(List<byte> bytes) => string.Join(",", bytes);
+
+    private List<byte> ConvertPassword(string password) => password.Split(',').Select(byte.Parse).ToList();
+
     [HttpPost]
     public IActionResult SignIn(SignInRequestPayload payload)
     {
         using ApplicationContext db = new ApplicationContext();
         var hashedPassword = HashPassword(payload.Password);
         var user = db.Users.FirstOrDefault(u => u.Nickname == payload.Login);
-        if (user is null || user.PasswordBytes != hashedPassword)
+        if (user is null || !ConvertPassword(user.Password).SequenceEqual(hashedPassword))
             return SignIn("Неправильное имя пользователя или пароль");
         var key = GetRandomKey();
+        Console.WriteLine(key);
         Response.Cookies.Append("auth", key, new CookieOptions { IsEssential = true, Secure = true });
         SessionCaseStorage.AddNewSession(key, user.Id);
         return Redirect("/");
@@ -56,7 +61,7 @@ public class AuthController : Controller
     {
         using ApplicationContext db = new ApplicationContext();
         var hashedPassword = HashPassword(payload.Password);
-        var newUser = new User { Nickname = payload.Login, Email = payload.Email, PasswordBytes = hashedPassword, Reg_date = DateTime.Now};
+        var newUser = new User { Nickname = payload.Login, Email = payload.Email, Password = ConvertPassword(hashedPassword), Reg_date = DateTime.Now};
         db.Users.Add(newUser);
         db.SaveChanges();
         var key = GetRandomKey();

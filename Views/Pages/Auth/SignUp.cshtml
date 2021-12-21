@@ -7,13 +7,13 @@
             <img class="auth__logo" src="~/img/logo.svg" alt="logo"/>
         </a>
 
-        <form class="auth__form">
-            <h2 class="auth__form-header">Авторизация</h2>
+        <form class="auth__form" asp-controller="Auth" asp-action="SignUp" method="post">
+            <h2 class="auth__form-header">Регистрация</h2>
             
-            <vc:text-input type="text" label="E-mail"/>
-            <vc:text-input type="text" label="Логин"/>
-            <vc:text-input type="password" label="Пароль"/>
-            <vc:button type="tertiary" text="Войти"/>
+            <vc:text-input type="text" label="E-mail" name="email"/>
+            <vc:text-input type="text" label="Логин" name="login"/>
+            <vc:text-input type="password" label="Пароль" name="password"/>
+            <vc:button style="tertiary" text="Войти" type="submit"/>
             <span class="auth__alternative">
                 Есть аккаунт?
                 <a class="auth__alternative-link" asp-controller="Auth" asp-action="SignIn">
