@@ -11,12 +11,11 @@
     //Tracks.AddNewTracksToDB();
     //Tracks.AddCommentToTracks();
     bool isLogined = Model is User;
-    Console.WriteLine(isLogined);
 }
 
 <link rel="stylesheet" href="~/css/pages/main.css">
 
-<vc:header islogined=@isLogined/>
+<vc:header is-logined=@isLogined/>
 
 <main role="main" class="main tg-container">
     <section class="main__about about tg-grid">

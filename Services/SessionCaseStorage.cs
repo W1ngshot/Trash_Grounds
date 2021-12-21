@@ -19,7 +19,7 @@ public static class SessionCaseStorage
     public static User? GetUserByKey(string key)
     {
         using ApplicationContext db = new ApplicationContext();
-        if (keys.Contains(key) && keysExpireDates[key] < DateTime.Now)
+        if (keys.Contains(key) && keysExpireDates[key] > DateTime.Now)
         {
             var userId = keysOwnersIds[key];
             return db.Users.FirstOrDefault(user => user.Id == userId);
