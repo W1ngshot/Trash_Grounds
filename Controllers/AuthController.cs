@@ -50,7 +50,6 @@ public class AuthController : Controller
         if (user is null || !ConvertPassword(user.Password).SequenceEqual(hashedPassword))
             return SignIn("Неправильное имя пользователя или пароль");
         var key = GetRandomKey();
-        Console.WriteLine(key);
         Response.Cookies.Append("auth", key, new CookieOptions { IsEssential = true, Secure = true });
         SessionCaseStorage.AddNewSession(key, user.Id);
         return Redirect("/");

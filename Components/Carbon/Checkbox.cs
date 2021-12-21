@@ -4,7 +4,7 @@ namespace TrashGrounds.Components;
 
 public class Checkbox : ViewComponent
 {
-    public IViewComponentResult Invoke(string label, string className)
+    public IViewComponentResult Invoke(string label = "", string className = "")
     {
         ViewBag.Label = label;
         ViewBag.ClassName = className;

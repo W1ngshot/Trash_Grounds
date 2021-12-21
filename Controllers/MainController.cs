@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TrashGrounds.Services.Middlewares;
 
 namespace TrashGrounds.Controllers;
 
@@ -14,6 +15,6 @@ public class MainController : Controller
 
     public IActionResult Index()
     {
-        return View("~/Views/Pages/Main.cshtml");
+        return View("~/Views/Pages/Main.cshtml", this.GetUser());
     }
 }

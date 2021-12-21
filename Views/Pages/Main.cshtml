@@ -1,4 +1,5 @@
 ﻿@using TrashGrounds.Services
+@using TrashGrounds.Models.Database
 @{
     Layout = "_Layout";
     
@@ -9,11 +10,13 @@
     //Tracks.AddAnotherRateToDB();
     //Tracks.AddNewTracksToDB();
     //Tracks.AddCommentToTracks();
+    bool isLogined = Model is User;
+    Console.WriteLine(isLogined);
 }
 
 <link rel="stylesheet" href="~/css/pages/main.css">
 
-<vc:header />
+<vc:header islogined=@isLogined/>
 
 <main role="main" class="main tg-container">
     <section class="main__about about tg-grid">

@@ -1,4 +1,7 @@
-﻿namespace TrashGrounds.Services;
+﻿using TrashGrounds.Models.Database;
+using TrashGrounds.Services.Database;
+
+namespace TrashGrounds.Services;
 
 public static class SessionCaseStorage
 {
@@ -13,10 +16,14 @@ public static class SessionCaseStorage
         keysOwnersIds.Add(key, userId);
     }
 
-    public static int? GetUserByKey(string key)
+    public static User? GetUserByKey(string key)
     {
-        if (!keys.Contains(key) && keysExpireDates[key] >= DateTime.Now)
-            return null;
-        return keysOwnersIds[key];
+        using ApplicationContext db = new ApplicationContext();
+        if (keys.Contains(key) && keysExpireDates[key] < DateTime.Now)
+        {
+            var userId = keysOwnersIds[key];
+            return db.Users.FirstOrDefault(user => user.Id == userId);
+        }
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TrashGrounds.Services.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
@@ -16,6 +17,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseStaticFiles("/assets");
 app.UseRouting();
+app.UseMiddleware<AuthentificationMiddleware>();
 
 app.MapControllerRoute(
     name: "default",
